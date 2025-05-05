@@ -61,6 +61,14 @@ class Minesweeper:
                         self.reveal(nx, ny)
         return True
 
+    def check_win(self):
+        # Vérifie si toutes les cases sans mines ont été révélées
+        for y in range(self.height):
+            for x in range(self.width):
+                if (y * self.width + x) not in self.mines and not self.revealed_cells[y][x]:
+                    return False
+        return True
+
     def play(self):
         while True:
             self.print_board()
@@ -71,11 +79,9 @@ class Minesweeper:
                     self.print_board(reveal=True)
                     print("Game Over! You hit a mine.")
                     break
-                
-                if all(
-                    self.revealed_cells[y][x] or (y * self.width + x) in self.mines
-                    for y in range(self.height) for x in range(self.width)
-                ):
+
+                # Vérifier si l'utilisateur a gagné
+                if self.check_win():
                     self.print_board(reveal=True)
                     print("Congratulations! You cleared the board!")
                     break
