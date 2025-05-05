@@ -1,43 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Background Color</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Background Color</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 50px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
 
 <h2>Click the button to change the background color</h2>
 
-<!-- Le bouton doit avoir l'ID correct pour que le JavaScript fonctionne -->
 <button id="colorButton">Change Color</button>
 
 <script>
-    // S'assurer que l'élément est chargé avant d'ajouter l'événement
-    document.addEventListener("DOMContentLoaded", function() {
-        // Attacher l'événement 'click' au bouton
-        document.getElementById("colorButton").addEventListener("click", function() {
-            changeBackgroundColor();
-        });
+    // Fixing the typo: The button ID in the HTML is "colorButton"
+    document.getElementById("colorButton").addEventListener("click", function() {
+        changeBackgroundColor();
     });
 
-    // Fonction qui change la couleur de fond
     function changeBackgroundColor() {
-        // Générer une couleur aléatoire
-        var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-        // Changer la couleur de fond du body
+        // Generate a random color
+        var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+        // Change the background color of the body
         document.body.style.backgroundColor = randomColor;
     }
 </script>
