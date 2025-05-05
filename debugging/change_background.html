@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Change Background Color</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding-top: 50px;
-    }
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -24,14 +24,17 @@
 <button id="colorButton">Change Color</button>
 
 <script>
-    document.getElementById("colorButton").addEventListener("click", function() {
-        changeBackgroundColor();
-    });
-
     function changeBackgroundColor() {
-        var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+        var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
         document.body.style.backgroundColor = randomColor;
     }
+
+    function main() {
+        var button = document.getElementById("colorButton");
+        button.addEventListener("click", changeBackgroundColor);
+    }
+
+    window.onload = main;
 </script>
 
 </body>
