@@ -9,7 +9,7 @@ class Minesweeper:
     def __init__(self, width=10, height=10, mines=10):
         self.width = width
         self.height = height
-        # Generate a set of unique random positions for mines
+        # Génère un ensemble d'indices uniques pour les mines
         self.mines = set(random.sample(range(width * height), mines))
         self.field = [[' ' for _ in range(width)] for _ in range(height)]
         self.revealed = [[False for _ in range(width)] for _ in range(height)]
@@ -45,7 +45,7 @@ class Minesweeper:
             return False
         self.revealed[y][x] = True
         if self.count_mines_nearby(x, y) == 0:
-            # Flood fill around the revealed cell to reveal adjacent cells
+            # Flood fill autour de la case révélée
             for dx in [-1, 0, 1]:
                 for dy in [-1, 0, 1]:
                     nx, ny = x + dx, y + dy
@@ -54,12 +54,12 @@ class Minesweeper:
         return True
 
     def check_win(self):
-        # Check if all non-mine cells are revealed
+        # Vérifie si toutes les cases non-mines sont révélées
         for y in range(self.height):
             for x in range(self.width):
                 if (y * self.width + x) not in self.mines and not self.revealed[y][x]:
-                    return False
-        return True
+                    return False  # Il y a encore des cases non-mines non révélées
+        return True  # Toutes les cases non-mines sont révélées
 
     def play(self):
         while True:
@@ -73,7 +73,7 @@ class Minesweeper:
                     print("Game Over! You hit a mine.")
                     break
 
-                # Check if the player has won after each move
+                # Vérifie si le joueur a gagné après chaque mouvement
                 if self.check_win():
                     self.print_board(reveal=True)
                     print("Congratulations! You've revealed all non-mine cells and won the game!")
